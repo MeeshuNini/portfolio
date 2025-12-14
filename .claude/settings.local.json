@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nul)",
+      "Bash(copy \"f:\\Padmasahithi-Kondeti-Portfolio\\portfolio\\app\\cat\\oneko.gif\" \"f:\\Padmasahithi-Kondeti-Portfolio\\portfolio\\public\\oneko.gif\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

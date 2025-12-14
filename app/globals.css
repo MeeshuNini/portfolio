@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Pastel Girly Theme (Light Mode) - Synced with Profile Image */
+  --background: #fff5f7; /* Very light warm pink */
+  --foreground: #5d4037; /* Warm Brown (unchanged, fits well) */
+  --muted: #fce7f3; /* Light pink muted */
+  --muted-foreground: #9d5c63; /* Muted rose brown */
+  --card: #fff0f5; /* Lavender Blush */
+  --card-foreground: #5d4037;
+  --border: #fbcfe8; /* Soft pink border */
+  --primary: #f472b6; /* Soft Rose Pink */
+  --secondary: #fce7f3; /* Very pale pink */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --font-sans: var(--font-patrick-hand);
   --font-mono: var(--font-geist-mono);
+  --font-dancing: var(--font-dancing);
+  --font-pacifico: var(--font-pacifico);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  /* Blackpink Theme (Dark Mode) */
+  --background: #000000; /* Black */
+  --foreground: #ffffff; /* White for readability */
+  --muted: #1a1a1a; /* Very Dark Gray */
+  --muted-foreground: #ff69b4; /* Hot Pink */
+  --card: #000000; /* Black Card */
+  --card-foreground: #ffffff;
+  --border: #ff69b4; /* Hot Pink Border */
+  --primary: #ff69b4; /* Hot Pink */
+  --secondary: #ff1493; /* Deep Pink */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono), monospace; /* Changed to Geist Mono */
+  cursor: url('/mouse-cursor.svg'), auto;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono); /* Ensure headings also use monospace */
+  letter-spacing: -0.02em;
+}
+
+.section-padding {
+  @apply py-24 sm:py-32;
+}
+
+.container-width {
+  @apply w-full max-w-none mx-0 px-6 sm:px-12 lg:px-24;
+}
+
+/* Ensure oneko cat is visible in both themes */
+#oneko {
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.3));
+}
+
+/* 3D Flip Animation Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 40s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }
